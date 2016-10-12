@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
@@ -100,18 +101,18 @@ public class TitleItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
         //最后调用 绘制在最上层
-//        int pos = ((LinearLayoutManager) (parent.getLayoutManager())).findFirstVisibleItemPosition();
-//
-//        String tag = mDatas.get(pos).getTag();
-//        View child = parent.findViewHolderForLayoutPosition(pos).itemView;
-//        mPaint.setColor(COLOR_TITLE_BG);
-//        c.drawRect(parent.getPaddingLeft(), parent.getPaddingTop(), parent.getRight() - parent.getPaddingRight(), parent
-//                .getPaddingTop() + mTitleHeight, mPaint);
-//        mPaint.setColor(COLOR_TITLE_FONT);
-//        mPaint.getTextBounds(tag, 0, tag.length(), mBounds);
-//        c.drawText(tag, child.getPaddingLeft(),
-//                parent.getPaddingTop() + mTitleHeight - (mTitleHeight / 2 - mBounds.height() / 2),
-//                mPaint);
+        int pos = ((LinearLayoutManager) (parent.getLayoutManager())).findFirstVisibleItemPosition();
+
+        String tag = mDatas.get(pos).getTag();
+        View child = parent.findViewHolderForLayoutPosition(pos).itemView;
+        mPaint.setColor(COLOR_TITLE_BG);
+        c.drawRect(parent.getPaddingLeft(), parent.getPaddingTop(), parent.getRight() - parent.getPaddingRight(), parent
+                .getPaddingTop() + mTitleHeight, mPaint);
+        mPaint.setColor(COLOR_TITLE_FONT);
+        mPaint.getTextBounds(tag, 0, tag.length(), mBounds);
+        c.drawText(tag, child.getPaddingLeft(),
+                parent.getPaddingTop() + mTitleHeight - (mTitleHeight / 2 - mBounds.height() / 2),
+                mPaint);
     }
 
     @Override
